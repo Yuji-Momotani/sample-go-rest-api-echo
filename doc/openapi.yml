@@ -1,0 +1,385 @@
+openapi: "3.0.3"
+
+info:
+  title: "TodoApp API"
+  version: "1.0.0"
+
+paths:
+  "/signup":
+    post:
+      summary: "ユーザー登録"
+      description: "ユーザー登録"
+      deprecated: false #trueの場合、廃止
+      tags: ["authentication"]
+      parameters: []
+      requestBody:
+        description: "email、passwordをオブジェクトでリクエストボディに含める"
+        required: true # リクエストボディが必要か否か
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: {type: string, example: "testuser@test.com"}
+                password: {type: string, example: "testpass"}
+      responses:
+        "201":
+          description: "成功"
+        "400":
+          description: "送信データが不正"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 400}
+                  message: {type: string, example: "bad request"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+  "/login":
+    post:
+      summary: "ログイン"
+      description: "ログイン：成功時token発行"
+      tags: ["authentication"]
+      deprecated: false #trueの場合、廃止
+      requestBody:
+        description: "email、passwordをオブジェクトでリクエストボディに含める"
+        required: true # リクエストボディが必要か否か
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: {type: string, example: "testuser@test.com"}
+                password: {type: string, example: "testpass"}
+      responses:
+        "200":
+          description: "成功"
+        "400":
+          description: "送信データが不正"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 400}
+                  message: {type: string, example: "bad request"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+  "/logout":
+    post:
+      summary: "ログアウト"
+      description: "ログアウト：成功時token失効"
+      tags: ["authentication"]
+      deprecated: false #trueの場合、廃止
+      requestBody:
+        description: "リクエストボディなし"
+        required: false # リクエストボディが必要か否か
+        content: {}
+      responses:
+        "200":
+          description: "成功"
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+  "/tasks":
+    get:
+      summary: "タスク一覧取得"
+      description: "ユーザーIDに紐づくすべてのタスクを取得"
+      deprecated: false #trueの場合、廃止
+      tags: ["tasks"]
+      parameters: []
+      responses:
+        "200":
+          description: "成功"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: array
+                    description: ユーザーに紐づくすべてのタスクを返します。
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: タスクID
+                          example: 1
+                        title:
+                          type: string
+                          description: タスク名
+                          example: 英語を学習する
+                        created_at:
+                          type: string
+                          description: 作成日
+                          example: 2023-10-20
+                        updated_at:
+                          type: string
+                          description: 最終更新日
+                          example: 2023-10-23
+        "401":
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 401}
+                  message: {type: string, example: "Unauthorized"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+      security:
+        - tokenKey: []
+  "/tasks/:taskId":
+    get:
+      summary: "特定のタスクを取得"
+      description: "特定のタスクを取得"
+      tags: ["tasks"]
+      deprecated: false #trueの場合、廃止
+      responses:
+        "200":
+          description: "成功"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: タスクID
+                    example: 1
+                  title:
+                    type: string
+                    description: タスク名
+                    example: 英語を学習する
+                  created_at:
+                    type: string
+                    description: 作成日
+                    example: 2023-10-20
+                  updated_at:
+                    type: string
+                    description: 最終更新日
+                    example: 2023-10-23
+        "401":
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 401}
+                  message: {type: string, example: "Unauthorized"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+      security:
+        - tokenKey: []
+    post:
+      summary: "タスク登録"
+      description: "タスクの登録"
+      tags: ["tasks"]
+      deprecated: false #trueの場合、廃止
+      requestBody:
+        description: ""
+        required: true # リクエストボディが必要か否か
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: {type: string, example: "英語の勉強をする"}
+      responses:
+        "201":
+          description: "成功"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: タスクID
+                    example: 1
+                  title:
+                    type: string
+                    description: タスク名
+                    example: 英語の勉強をする
+                  created_at:
+                    type: string
+                    description: 作成日
+                    example: 2023-10-20
+                  updated_at:
+                    type: string
+                    description: 最終更新日
+                    example: 2023-10-23
+        "400":
+          description: "送信データが不正"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 400}
+                  message: {type: string, example: "bad request"}
+        "401":
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 401}
+                  message: {type: string, example: "Unauthorized"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+      security:
+        - tokenKey: []
+    put:
+      summary: "タスク更新"
+      description: "タスクの更新"
+      tags: ["tasks"]
+      deprecated: false #trueの場合、廃止
+      requestBody:
+        description: ""
+        required: true # リクエストボディが必要か否か
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: {type: string, example: "英語を勉強する"}
+      responses:
+        "200":
+          description: "成功"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: タスクID
+                    example: 1
+                  title:
+                    type: string
+                    description: タスク名
+                    example: 英語を学習する
+                  created_at:
+                    type: string
+                    description: 作成日
+                    example: 2023-10-20
+                  updated_at:
+                    type: string
+                    description: 最終更新日
+                    example: 2023-10-23
+        "400":
+          description: "送信データが不正"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 400}
+                  message: {type: string, example: "bad request"}
+        "401":
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 401}
+                  message: {type: string, example: "Unauthorized"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+      security:
+        - tokenKey: []
+    delete:
+      summary: "タスク削除"
+      description: "タスクの削除"
+      tags: ["tasks"]
+      deprecated: false #trueの場合、廃止
+      requestBody:
+        description: "リクエストボディなし"
+        required: false # リクエストボディが必要か否か
+        content: {}
+      responses:
+        "200":
+          description: "成功"
+        "401":
+          description: "認証失敗"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 401}
+                  message: {type: string, example: "Unauthorized"}
+        "500":
+          description: "サーバーエラー"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: {type: string, example: 500}
+                  message: {type: string, example: "server error"}
+      security:
+        - tokenKey: []
+
+components:
+  securitySchemes:
+    tokenKey:
+      description: "JWT authentication"
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
