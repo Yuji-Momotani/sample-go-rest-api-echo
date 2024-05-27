@@ -28,8 +28,6 @@ func NewUserUsecase(ur repository.IUserRepository, uv validator.IUserValidator) 
 	return &userUsecase{ur: ur, uv: uv}
 }
 
-//処理部
-
 // SignUp：ユーザー登録
 func (uu *userUsecase) SingUp(user model.User) (model.UserResponse, error) {
 	hashPass, err := bcrypt.GenerateFromPassword([]byte(user.Password), 10)

@@ -11,11 +11,6 @@ import (
 
 func main() {
 	db := db.NewDB()
-	//処理
-	//repository
-	//usecase
-	//controller
-	//router → echo.Echo
 	userValidator := validator.NewUserValidator()
 	taskValidator := validator.NewTaskValidator()
 	userRepository := repository.NewUserRepository(db)

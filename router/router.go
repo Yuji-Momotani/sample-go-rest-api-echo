@@ -23,10 +23,10 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController) *ec
 		CookiePath:     "/",
 		CookieDomain:   os.Getenv("API_DOMAIN"),
 		CookieHTTPOnly: true,
-		// CookieSecure: true,
+		CookieSecure:   true, // 動作確認時はコメントアウト（PostManからのリクエストを受け付けないため）
 		CookieSameSite: http.SameSiteNoneMode,
 		// CookieSameSite: http.SameSiteDefaultMode, // 動作確認用。SameSiteNoneModeにすると自動的にSecureがtrueになるためPostManで動作確認するときはこちらを適用
-		// CookieMaxAge:   60, //CSRFトークンはデフォルトで24時間が有効期限。MaxAgeを変更することで有効期限が変更可能
+		CookieMaxAge: 60, //CSRFトークンはデフォルトで24時間が有効期限。MaxAgeを変更することで有効期限が変更可能
 	}))
 	e.POST("/signup", uc.SingUp)
 	e.POST("/login", uc.LogIn)
