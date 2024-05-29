@@ -24,7 +24,7 @@ type userController struct {
 }
 
 // コンストラクタ
-func NewUserUsecase(uu usecase.IUserUsecase) IUserController {
+func NewUserController(uu usecase.IUserUsecase) IUserController {
 	return &userController{uu: uu}
 }
 
