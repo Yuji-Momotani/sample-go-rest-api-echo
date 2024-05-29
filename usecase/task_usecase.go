@@ -1,9 +1,9 @@
 package usecase
 
 import (
-	"todo-rest-api-3/model"
-	"todo-rest-api-3/repository"
-	"todo-rest-api-3/validator"
+	"sample-go-rest-api-echo/model"
+	"sample-go-rest-api-echo/repository"
+	"sample-go-rest-api-echo/validator"
 )
 
 type ITaskUsecase interface {

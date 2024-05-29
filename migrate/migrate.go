@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"todo-rest-api-3/db"
-	"todo-rest-api-3/model"
+	"sample-go-rest-api-echo/db"
+	"sample-go-rest-api-echo/model"
 )
 
 func main() {

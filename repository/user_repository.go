@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"todo-rest-api-3/model"
+	"sample-go-rest-api-echo/model"
 
 	"gorm.io/gorm"
 )

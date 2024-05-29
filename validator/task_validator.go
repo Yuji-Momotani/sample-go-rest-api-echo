@@ -1,7 +1,7 @@
 package validator
 
 import (
-	"todo-rest-api-3/model"
+	"sample-go-rest-api-echo/model"
 
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 )

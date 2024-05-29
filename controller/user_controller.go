@@ -3,9 +3,9 @@ package controller
 import (
 	"net/http"
 	"os"
+	"sample-go-rest-api-echo/model"
+	"sample-go-rest-api-echo/usecase"
 	"time"
-	"todo-rest-api-3/model"
-	"todo-rest-api-3/usecase"
 
 	"github.com/labstack/echo/v4"
 )

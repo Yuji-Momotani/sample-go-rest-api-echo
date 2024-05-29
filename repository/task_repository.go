@@ -2,7 +2,7 @@ package repository
 
 import (
 	"errors"
-	"todo-rest-api-3/model"
+	"sample-go-rest-api-echo/model"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"

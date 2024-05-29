@@ -2,10 +2,10 @@ package usecase
 
 import (
 	"os"
+	"sample-go-rest-api-echo/model"
+	"sample-go-rest-api-echo/repository"
+	"sample-go-rest-api-echo/validator"
 	"time"
-	"todo-rest-api-3/model"
-	"todo-rest-api-3/repository"
-	"todo-rest-api-3/validator"
 
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"

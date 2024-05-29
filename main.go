@@ -2,12 +2,12 @@ package main
 
 import (
 	"log"
-	"todo-rest-api-3/controller"
-	"todo-rest-api-3/db"
-	"todo-rest-api-3/repository"
-	"todo-rest-api-3/router"
-	"todo-rest-api-3/usecase"
-	"todo-rest-api-3/validator"
+	"sample-go-rest-api-echo/controller"
+	"sample-go-rest-api-echo/db"
+	"sample-go-rest-api-echo/repository"
+	"sample-go-rest-api-echo/router"
+	"sample-go-rest-api-echo/usecase"
+	"sample-go-rest-api-echo/validator"
 )
 
 func main() {

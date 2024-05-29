@@ -2,9 +2,9 @@ package controller
 
 import (
 	"net/http"
+	"sample-go-rest-api-echo/model"
+	"sample-go-rest-api-echo/usecase"
 	"strconv"
-	"todo-rest-api-3/model"
-	"todo-rest-api-3/usecase"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"

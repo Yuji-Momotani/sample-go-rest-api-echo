@@ -1,4 +1,4 @@
-module todo-rest-api-3
+module sample-go-rest-api-echo
 
 go 1.21.4
 
