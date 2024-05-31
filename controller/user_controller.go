@@ -42,6 +42,7 @@ func (uc *userController) SingUp(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, userRes)
 }
+
 func (uc *userController) LogIn(c echo.Context) error {
 	user := model.User{}
 	if err := c.Bind(&user); err != nil {
@@ -66,6 +67,7 @@ func (uc *userController) LogIn(c echo.Context) error {
 	c.SetCookie(cookie)
 	return c.NoContent(http.StatusOK)
 }
+
 func (uc *userController) LogOut(c echo.Context) error {
 	cookie := new(http.Cookie)
 	cookie.Name = "token"
