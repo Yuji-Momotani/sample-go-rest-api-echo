@@ -33,3 +33,8 @@ Go言語で実装するrest apiのサンプルコード。（フレームワー�
 
 テストコードの追加
 
+## v3.0
+
+GitHubActionsで自動テストの実施
+
+[![unit-test](https://github.com/Yuji-Momotani/sample-go-rest-api-echo/actions/workflows/unit-test.yaml/badge.svg)](https://github.com/Yuji-Momotani/sample-go-rest-api-echo/actions/workflows/unit-test.yaml)
