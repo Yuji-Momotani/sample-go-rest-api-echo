@@ -8,3 +8,6 @@ air
 
 # デバッグでの実行
 # dlv debug ./main.go --headless --listen=:2345 --log --api-version=2
+
+# 本番実行
+./app

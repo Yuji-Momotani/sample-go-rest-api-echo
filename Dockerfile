@@ -7,6 +7,7 @@ COPY . /app
 # COPY air.toml /app
 
 RUN go mod download
+RUN go build -o app main.go
 RUN apk add --no-cache bash
 
 # delvのインストール（デバッグ）
