@@ -26,6 +26,8 @@ services:
     restart: always
   api:
     container_name: app-api
+    depends_on:
+      - db
     build: .
     ports:
       - "8080:8080"

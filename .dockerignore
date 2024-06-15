@@ -1,0 +1,8 @@
+# すべてのテストファイルを除外
+*/*_test.go
+
+# その他の不要なファイルやディレクトリを除外
+.DS_Store
+node_modules
+vendor
+.env
